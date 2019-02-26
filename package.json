@@ -1,0 +1,8 @@
+{
+  "name": "storybook-photoshop-jsx",
+  "version": "0.0.1",
+  "description": "Photoshop scripts for managing storybook assets.",
+  "main": "na",
+  "author": "Andrew Rapo <andrew@wwlib.org>",
+  "license": "MIT"
+}
