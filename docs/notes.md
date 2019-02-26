@@ -48,6 +48,7 @@ Notes and relevant, helpful links.
 - https://github.com/tahoedesigner/ExtendScript/blob/master/Hello%20World.jsx
 - https://www.creativebloq.com/photoshop/scripts-4132441
 - https://stackoverflow.com/questions/38701446/photoshop-scriptui-show-a-dialog-window-close-it-show-it-again-gives-an-empty
+- https://graphicdesign.stackexchange.com/questions/117082/scriptui-photoshop-palettes
 
 #### adobe bezier data model
 - https://illustrator-scripting-guide.readthedocs.io/scriptingApplescript/creatingPathsShapes/
