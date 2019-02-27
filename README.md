@@ -2,6 +2,9 @@
 
 Photoshop scripts for managing storybook assets.
 
+#### documentation
+See this Medium article: [https://medium.com/@andrew.rapo/using-adobes-javascript-based-extendscript-jsx-to-automate-photoshop-workflow-tasks-f3b6690650d9](https://medium.com/@andrew.rapo/using-adobes-javascript-based-extendscript-jsx-to-automate-photoshop-workflow-tasks-f3b6690650d9)
+
 #### usage
 The jsx folder contains scripts that can be opened in Photoshop via 
 
