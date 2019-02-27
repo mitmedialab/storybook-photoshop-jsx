@@ -22,8 +22,36 @@ do-get-layers.jsx
 var data = getLayerData();
 alert(JSON.stringify(data, null, 2));
 ```
-
-![layers-json](./docs/layers-json.png)
+The output looks like:
+```
+{
+  "layerNames": [
+    "guide_tl",
+    "seed",
+    "peach",
+    "bg"
+  ],
+  "layerCount": 4,
+  "layers": [
+    {
+      "type": "GUIDE",
+      "name": "guide_tl"
+    },
+    {
+      "type": "OBJ",
+      "name": "seed"
+    },
+    {
+      "type": "OBJ",
+      "name": "peach"
+    },
+    {
+      "type": "BG",
+      "name": "bg"
+    }
+  ]
+}
+```
 
 ##### layer types
 The *type* for each layer is determined by the first word (prefix word) in each layer's name. Layer names should be underscore-delimited. i.e. *bg_main* or *obj_peach*. If there is only one bg it can be named *bg*. Valid prefix words include:
@@ -59,10 +87,45 @@ Gets the path data from the Work Path - both SVG path data and bezier path data.
 do-get-path-data.jsx
 ```
 **SVG Path Data**
-![get-path-data-svg](./docs/do-get-path-data-svg.png)
+```
+M689 281C710.435221285203 282.050722610512 734.938543937045 281.48934292098 751 288C823.962562426532 317.576037297225 869.579783631659 413.905746219374 810 493C787.119662197185 523.374451440617 755.729558281528 536.583852141727 708 543C687.6687 542.3334 667.3313 541.6666 647 541C638.632720583811 545.328833790592 635.113792760834 555.358477449161 628 561C603.358734520226 580.541510353059 574.502693773079 596.390451588511 538 604C436.012088397763 625.260950097228 348.762579462231 531.646136186465 365 434C367.957429932036 416.215056558162 367.058265877123 400.856198210928 373 387C397.407713092162 330.080908117657 455.515078242546 356.540803684843 518 346C533.154518570513 343.443530363851 571.662669952291 351.680893824889 574 350C594.880015894225 324.146012684335 609.3388741798 298.195654143152 644 286
+```
 
 **Bezier Path Data**
-![get-path-data-bezier](./docs/do-get-path-data-bezier.png)
+```
+[
+  {
+    "anchor": {
+      "x": 689,
+      "y": 281
+    },
+    "leftDirection": {
+      "x": 710.435221285203,
+      "y": 282.050722610512
+    },
+    "rightDirection": {
+      "x": 675.597084969992,
+      "y": 286.152049962991
+    }
+  },
+...
+
+  {
+    "anchor": {
+      "x": 644,
+      "y": 286
+    },
+    "leftDirection": {
+      "x": 655.968336099604,
+      "y": 281.788893629799
+    },
+    "rightDirection": {
+      "x": 609.3388741798,
+      "y": 298.195654143152
+    }
+  }
+]
+```
 
 #### export-svg.jsx
 Exports SVG Path Data as a standard SVG xml file to the same directory as the PSD. Run using:
