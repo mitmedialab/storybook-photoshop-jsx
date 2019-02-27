@@ -1,5 +1,5 @@
 // get-layers.jsx
-// organize layers into arrays based on each layer's name
+// organize layers based on each layer's name
 
 function getLayerData() {
     var allLayers = app.activeDocument.layers;
@@ -11,7 +11,6 @@ function getLayerData() {
     for (var i=0; i < allLayers.length; i++) {
         var layer = allLayers[i];
         var layerData = {};
-        // layerData.name = layer.name;
         layerData = getLayerTypeWithName(layer.name);
         data.layers.push(layerData);
         data.layerNames.push(layer.name);

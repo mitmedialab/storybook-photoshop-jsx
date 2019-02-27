@@ -77,5 +77,3 @@ function hideLayerWithLayerName(layerName) {
     var layer = doc.layers.getByName(layerName);
     layer.visible = 0;
 }
-
-// processFile();

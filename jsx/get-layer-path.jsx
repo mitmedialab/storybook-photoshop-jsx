@@ -138,11 +138,3 @@ function selectionToWorkPath() {
         var workPath = app.activeDocument.pathItems.getByName('Work Path');
         return workPath;
 }
-
-// function testGetPathWithLayerName() {
-//     var result = getPathWithLayerName();
-//     app.activeDocument.selection.deselect();
-//     app.activeDocument.selection.select(result.pathData.selectionRect);
-// }
-
-// testGetPathWithLayerName();

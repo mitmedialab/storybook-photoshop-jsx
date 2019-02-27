@@ -1,10 +1,8 @@
 #### storybook-photoshop-jsx notes
 Notes and relevant, helpful links.
 
-#### repo
-- https://github.com/hsw107/Photoshop-Export-Layers-to-Files-Fast
 
-#### tutorial
+#### helpful tutorial
 - https://www.youtube.com/watch?v=LxxqxEVYfVc
 - 
 

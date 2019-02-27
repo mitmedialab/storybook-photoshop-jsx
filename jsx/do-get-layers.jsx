@@ -1,5 +1,8 @@
 #include json2.js
+#include copy-to-clipboard.jsx
 #include get-layers.jsx
 
 var data = getLayerData();
-alert(JSON.stringify(data, null, 2));
+var dataText = JSON.stringify(data, null, 2);
+copyTextToClipboard(dataText);
+alert(dataText);

@@ -85,6 +85,10 @@ Uses all of the above scripts to:
 - save all of the path data for all OBJECT layers to a json file
 - save a jpeg image of all layers except GUIDE layers.
 
+Run using:
+```
+do-process-file.jsx
+```
 
 #### do-storybook-palette.jsx
 A non-modal (palette) window with buttons to invoke the above scripts can by run using:
