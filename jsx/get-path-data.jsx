@@ -29,20 +29,32 @@ function pathToSvgData(path) {
 }
 
 function pathToBezierData(path) {
-    var bezierData = [];    
-    var points = path.subPathItems[0].pathPoints;
+    var bezierData = [];
+    var allBezierData = [];
+    for (var i = 0; i < path.subPathItems.length; i++) {
+        var points = path.subPathItems[i].pathPoints;
 
-    for (var p=0; p<points.length; p++){
-        point = points[p];
-        bezierPoint = {
-            anchor: { x: Number(point.anchor[0]), y: Number(point.anchor[1]) },
-            leftDirection: { x: Number(point.leftDirection[0]), y: Number(point.leftDirection[1]) },
-            rightDirection: { x: Number(point.rightDirection[0]), y: Number(point.rightDirection[1]) },
+        for (var p=0; p<points.length; p++){
+            point = points[p];
+            bezierPoint = {
+                anchor: { x: Number(point.anchor[0]), y: Number(point.anchor[1]) },
+                leftDirection: { x: Number(point.leftDirection[0]), y: Number(point.leftDirection[1]) },
+                rightDirection: { x: Number(point.rightDirection[0]), y: Number(point.rightDirection[1]) },
+            }
+            bezierData.push(bezierPoint);
         }
-        bezierData.push(bezierPoint);
+        if (path.closed){
+            bezierData.closed = true;
+        }
+        allBezierData.push(bezierData);
+        bezierData = [];
+
     }
-    if (path.closed){
-        bezierData.closed = true;
-    }
-    return bezierData;
+    return allBezierData;
 }
+
+
+
+
+
+

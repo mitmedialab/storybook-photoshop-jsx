@@ -11,9 +11,11 @@ function processFile(options) {
     var data = {};
 
     if (options && options.resize && options.resize.width && options.resize.height) {
-        doc.resizeImage(options.resize.width, options.resize.height);
+        var width = UnitValue(options.resize.width,"px");
+        var height = UnitValue(options.resize.height,"px");
+        doc.resizeImage(width, height);
     }
-    
+
     doc.selection.selectAll();
     var documentBounds = getSelectionBounds();
     data.documentBounds = documentBounds;
@@ -40,8 +42,8 @@ function processFile(options) {
     }
 
     data.layerData = layerData;
-    saveJson(doc.path + '/' + doc.name + '.json', data);
-    saveJpeg(doc.path + '/' + doc.name + '.jpg');
+    saveJson(doc.path + '/' + doc.name.slice(0, doc.name.length-4) + '.json', data);
+    saveJpeg(doc.path + '/' + doc.name.slice(0, doc.name.length-4) + '.jpg');
 }
 
 function saveJson(filepath, data) {

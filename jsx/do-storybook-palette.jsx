@@ -6,6 +6,8 @@
 #include get-path-data.jsx
 #include get-bounds.jsx
 #include export-svg.jsx
+#include get-bezier-path.jsx
+#include save-background-image.jsx
 
 var doc = app.activeDocument;
 
@@ -19,14 +21,25 @@ function createPalette() {
     var palette = new Window('palette', 'Storybook Tools', [100,100,480,350]);
     palette.btnPnl = palette.add('panel', [25,15,365,225], 'Objects');
     
-    palette.btnPnl.getPathBtn = palette.btnPnl.add('button', [15,30,305,50], 'getPath (selected layer)', {name:'getPath'});
-    palette.btnPnl.getPathBtn.onClick = getPath;
+    //getPath
+    //palette.btnPnl.getPathBtn = palette.btnPnl.add('button', [15,30,305,50], 'getPath (selected layer)', {name:'getPath'});
+    //palette.btnPnl.getPathBtn.onClick = getPath;
+
+    //saveBackgroundImage
+    palette.btnPnl.getPathBtn = palette.btnPnl.add('button', [15,30,305,50], 'saveBackgroundImage', {name:'saveBackgroundImage'});
+    palette.btnPnl.getPathBtn.onClick = doSaveBackgroundImage;
     
+    //processFile
     palette.btnPnl.processFileBtn = palette.btnPnl.add('button', [15,60,305,50], 'processFile', {name:'processFile'});
     palette.btnPnl.processFileBtn.onClick = doProcessFile;
     
-    palette.btnPnl.testExportSvgBtn = palette.btnPnl.add('button', [15,90,305,50], 'testExportSvg', {name:'testExportSvg'});
-    palette.btnPnl.testExportSvgBtn.onClick = doExportSvg;
+    //testExportSvg
+    //palette.btnPnl.testExportSvgBtn = palette.btnPnl.add('button', [15,90,305,50], 'testExportSvg', {name:'testExportSvg'});
+    //palette.btnPnl.testExportSvgBtn.onClick = doExportSvg;
+
+    //getJson
+    palette.btnPnl.processFileBtn = palette.btnPnl.add('button', [15,90,305,50], 'getBezierPath', {name:'getBezierPath'});
+    palette.btnPnl.processFileBtn.onClick = doGetBezierPath;
     
     palette.btnPnl.cancelBtn = palette.btnPnl.add('button', [15,120,305,50], 'cancel', {name:'cancel'});
     palette.btnPnl.cancelBtn.onClick = doCancel;  
@@ -40,6 +53,16 @@ function getPath() {
     doc.selection.select(result.pathData.selectionRect);
 }
 
+function doSaveBackgroundImage() {
+    var options = {
+        resize: {
+            width: 1024,
+            height: 640
+        }
+    }
+    saveBackgroundImage(options);
+}
+
 function doProcessFile() {
     var options = {
         resize: {
@@ -48,6 +71,16 @@ function doProcessFile() {
         }
     }
     processFile(options);
+}
+
+function doGetBezierPath() {
+    var options = {
+        resize: {
+            width: 1024,
+            height: 640
+        }
+    }
+    getBezierPath(options);
 }
 
 function doExportSvg() {    
