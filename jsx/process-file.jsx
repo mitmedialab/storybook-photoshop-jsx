@@ -11,7 +11,7 @@ function processFile(options) {
     var data = {};
 
     if (options && options.resize && options.resize.width && options.resize.height) {
-        doc.resizeImage(options.resize.width, options.resize.height);
+        doc.resizeImage(UnitValue(options.resize.width,"px"), UnitValue(options.resize.height,"px"));
     }
     
     doc.selection.selectAll();
