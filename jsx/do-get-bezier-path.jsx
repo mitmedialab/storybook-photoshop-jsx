@@ -3,7 +3,7 @@
 var options = {
     resize: {
         width: 1024,
-        height: 576
+        height: 640
     }
 }
 getBezierPath(options);
