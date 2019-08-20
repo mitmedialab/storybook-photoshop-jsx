@@ -22,26 +22,26 @@ function createPalette() {
     palette.btnPnl = palette.add('panel', [25,15,365,225], 'Objects');
     
     //getPath
-    //palette.btnPnl.getPathBtn = palette.btnPnl.add('button', [15,30,305,50], 'getPath (selected layer)', {name:'getPath'});
-    //palette.btnPnl.getPathBtn.onClick = getPath;
-
-    //saveBackgroundImage
-    palette.btnPnl.getPathBtn = palette.btnPnl.add('button', [15,30,305,50], 'saveBackgroundImage', {name:'saveBackgroundImage'});
-    palette.btnPnl.getPathBtn.onClick = doSaveBackgroundImage;
-    
+    palette.btnPnl.getPathBtn = palette.btnPnl.add('button', [15,15,305,40], 'getPath (selected layer)', {name:'getPath'});
+    palette.btnPnl.getPathBtn.onClick = getPath;
+   
     //processFile
-    palette.btnPnl.processFileBtn = palette.btnPnl.add('button', [15,60,305,50], 'processFile', {name:'processFile'});
+    palette.btnPnl.processFileBtn = palette.btnPnl.add('button', [15,45,305,50], 'processFile', {name:'processFile'});
     palette.btnPnl.processFileBtn.onClick = doProcessFile;
     
     //testExportSvg
-    //palette.btnPnl.testExportSvgBtn = palette.btnPnl.add('button', [15,90,305,50], 'testExportSvg', {name:'testExportSvg'});
-    //palette.btnPnl.testExportSvgBtn.onClick = doExportSvg;
+    palette.btnPnl.testExportSvgBtn = palette.btnPnl.add('button', [15,75,305,50], 'testExportSvg', {name:'testExportSvg'});
+    palette.btnPnl.testExportSvgBtn.onClick = doExportSvg;
+
+    //saveBackgroundImage
+    palette.btnPnl.saveBackgroundBtn = palette.btnPnl.add('button', [15,105,305,50], 'saveBackgroundImage', {name:'saveBackgroundImage'});
+    palette.btnPnl.saveBackgroundBtn.onClick = doSaveBackgroundImage;
 
     //getJson
-    palette.btnPnl.processFileBtn = palette.btnPnl.add('button', [15,90,305,50], 'getBezierPath', {name:'getBezierPath'});
-    palette.btnPnl.processFileBtn.onClick = doGetBezierPath;
+    palette.btnPnl.getBezierBtn = palette.btnPnl.add('button', [15,135,305,50], 'getBezierPath', {name:'getBezierPath'});
+    palette.btnPnl.getBezierBtn.onClick = doGetBezierPath;
     
-    palette.btnPnl.cancelBtn = palette.btnPnl.add('button', [15,120,305,50], 'cancel', {name:'cancel'});
+    palette.btnPnl.cancelBtn = palette.btnPnl.add('button', [15,165,305,50], 'cancel', {name:'cancel'});
     palette.btnPnl.cancelBtn.onClick = doCancel;  
     
     return palette;

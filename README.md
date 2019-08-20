@@ -37,7 +37,7 @@ The output looks like:
   "layerCount": 4,
   "layers": [
     {
-      "type": "GUIDE",
+      "type": "OBJ",
       "name": "guide_tl"
     },
     {
@@ -45,8 +45,8 @@ The output looks like:
       "name": "seed"
     },
     {
-      "type": "OBJ",
-      "name": "peach"
+      "type": "TL",
+      "name": "tl"
     },
     {
       "type": "BG",
@@ -59,12 +59,10 @@ The output looks like:
 ##### layer types
 The *type* for each layer is determined by the first word (prefix word) in each layer's name. Layer names should be underscore-delimited. i.e. *bg_main* or *obj_peach*. If there is only one bg it can be named *bg*. Valid prefix words include:
 - **fg** - FG (foreground) layer
-- **guide** - GUIDE layer
-Layers with the following prefixes are also treated as GUIDE layers
-  - **tl**
-  - **tr**
-  - **bl**
-  - **br**
+- **tl** - TL (top left) layer
+- **tr** - TR (top right) layer
+- **bl** - BL (bottom left) layer
+- **br** - BR (bottom right) layer
 - **bg** - BG (background) layer
 - **obj** - OBJ (object) layer
 Note: Layers without a prefix from the above list are treated as OBJ layers by default.
@@ -156,6 +154,23 @@ Run using:
 do-process-file.jsx
 ```
 
+#### get-bezier-path.jsx and save-background-image.jsx
+Both scripts work on psd files that are nested within two folders (ex: to process `psd/story_1/peaches.psd`, run the scripts on `psd`).
+
+See [this guide](https://drive.google.com/open?id=1svSABg5kawoEDMn6g_IadOfPKMZZO90b) for how to use these scripts.
+
+##### get-bezier-path.jsx
+Saves bezier path data and seperates results into new subfolders according to the original subfolders.  For example, if run on `psd` where `psd` contains `psd/story_1/peaches.psd`, the resulting bezier path data will be in `psd/story_1_json/peaches.json`.  Can be run using:
+```
+do-get-bezier-path.jsx
+```
+
+##### save-background-image.jsx
+Hides FG and OBJ layers before it saves the visible layers to a jpg and seperates results into new subfolders according to the original subfolders.  For example, if run on `psd` where `psd` contains `psd/story_1/peaches.psd`, the resulting jpg will be in `psd/story_1_jpg/peaches.jpg`.  Can be run using:
+```
+do-save-background-image.jsx
+```
+
 #### do-storybook-palette.jsx
 A non-modal (palette) window with buttons to invoke the above scripts can by run using:
 ```
@@ -164,8 +179,10 @@ do-storybook-palette.jsx
 ![storybook-palette](./docs/do-storybook-palette.png)
 
 #### do-storybook-dialog.jsx
-An alternative modal (dialog) window with buttons to invoke the above scripts can by run using:
+An alternative modal (dialog) window with buttons to invoke the above scripts, except `get-bezier-path.jsx` and `save-background-image.jsx`, can by run using:
 ```
 do-storybook-dialog.jsx
 ```
 ![storybook-dialog](./docs/do-storybook-dialog.png)
+
+
