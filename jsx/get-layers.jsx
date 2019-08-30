@@ -40,6 +40,12 @@ function getLayerTypeWithName(layerName) {
         case 'bg':
             type = 'BG';
             break;
+        case 'background':
+            type = 'BG';
+            break;
+        case 'Background':
+            type = 'BG';
+            break;
         default:
             type = 'OBJ';
             break;

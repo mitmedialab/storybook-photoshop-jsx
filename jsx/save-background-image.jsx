@@ -30,13 +30,16 @@ function saveBackgroundImage(options) {
                     f.create();
                 }
 
-                //dimensions for resizing
-                if (options && options.resize && options.resize.width && options.resize.height) {
+                //automatic resizing so that width is 1024 and height is scaled by same amount
+                if (doc.width > 1024) {
+                	var ratio = UnitValue(1024,"px")/doc.width;
+                    var width = UnitValue(1024,"px");
+                    var height = UnitValue(Math.round(ratio*doc.height),"px");
+                    
+		            doc.resizeImage(width,height,null,ResampleMethod.BICUBIC);
+		            doc.resizeCanvas(width,height);
+		        }
 
-                    //do the resizing for both the image and the canvas
-                    doc.resizeImage(UnitValue(options.resize.width,"px"),UnitValue(options.resize.height,"px"),null,ResampleMethod.BICUBIC);
-                    doc.resizeCanvas(UnitValue(options.resize.width,"px"),UnitValue(options.resize.height,"px"));
-                }
 
                 //only show background and textbox layers
                 //get textbox location for naming
@@ -46,10 +49,11 @@ function saveBackgroundImage(options) {
                 var type = '';
                 var bg_present = false;
 
-                hideAllLayers()
+                //hideAllLayers();
 
                 for (var i=0; i < layers.length; i++) {
                     var layer = layers[i];
+
 
                     switch (layer.type) {
                         case 'TL':
@@ -69,16 +73,22 @@ function saveBackgroundImage(options) {
                             showLayerWithLayerName(layer.name);
                             break;
                         case 'BG':
+                        	if (bg_present) {
+                        		alert("Two backgrounds");
+                        		alert(doc.name);
+                        	}
                             bg_present = true;
                             showLayerWithLayerName(layer.name);
                             break;
                         default:
+                        	hideLayerWithLayerName(layer.name);
                             break;
                     }
                 }
 
                 if (!bg_present) {
-                    alert(doc.path);
+                	alert("No background");
+                    alert(doc.name);
                 }
 
                 //save the renamed / edited file to the jpg folder
@@ -93,25 +103,33 @@ function saveBackgroundImage(options) {
 function showAllLayers() {
     var doc = app.activeDocument;
     for(var i = 0 ; i < doc.layers.length;i++){
-        doc.layers[i].visible = 1;
-    }
+    	if (doc.layers[i].visible != 1) {
+	        doc.layers[i].visible = 1;
+    	}
+	}
 }
 
 function hideAllLayers() {
     var doc = app.activeDocument;
     for(var i = 0 ; i < doc.layers.length;i++){
-        doc.layers[i].visible = 0;
+    	if (doc.layers[i].visible != 0) {
+        	doc.layers[i].visible = 0;
+    	}
     }
 }
 
 function showLayerWithLayerName(layerName) {
     var doc = app.activeDocument;
     var layer = doc.layers.getByName(layerName);
-    layer.visible = 1;
+    if (layer.visible != 1) {
+    	layer.visible = 1;
+	}
 }
 
 function hideLayerWithLayerName(layerName) {
     var doc = app.activeDocument;
     var layer = doc.layers.getByName(layerName);
-    layer.visible = 0;
+    if (layer.visible != 0) {
+    	layer.visible = 0;
+	}
 }

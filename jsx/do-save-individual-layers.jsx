@@ -1,4 +1,4 @@
-#include save-background-image.jsx
+#include save-individual-layers.jsx
 
 var options = {
 	resize: {
@@ -6,4 +6,4 @@ var options = {
         height: 640
     }
 }
-saveBackgroundImage(options);
+saveLayers(options);

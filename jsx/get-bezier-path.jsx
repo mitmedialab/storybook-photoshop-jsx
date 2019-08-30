@@ -12,8 +12,7 @@ function getBezierPath(options) {
     if (storybook) {
         var storyFolders = storybook.getFiles(function(f) { return f instanceof Folder; });
     
-        //individual story folder
-        if (options && options.resize && options.resize.width && options.resize.height) {
+        if (options) {
             for (var m = 0; m < storyFolders.length; m++) {
 
                 try {
@@ -29,9 +28,14 @@ function getBezierPath(options) {
 
                     var doc = app.activeDocument;
 
-                    var width = UnitValue(options.resize.width,"px");
-                    var height = UnitValue(options.resize.height,"px");
-                    doc.resizeImage(width, height);
+                    if (doc.width > 1024) {
+                        var ratio = UnitValue(1024, "px")/doc.width;
+                        var width = UnitValue(1024,"px");
+                        var height = UnitValue(Math.round(ratio*doc.height),"px");
+                        
+                        doc.resizeImage(width,height,null,ResampleMethod.BICUBIC);
+                        doc.resizeCanvas(width,height);
+                    }
                 }
             }
         }
