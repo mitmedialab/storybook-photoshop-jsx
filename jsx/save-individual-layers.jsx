@@ -2,7 +2,8 @@
 #include get-layers.jsx
 
 function saveLayers(options) {
-    var storybook = Folder.selectDialog("select folder"); // select folder that has folders of psd files in it
+    var storybook = Folder.selectDialog("select source folder"); // select root folder that has folders of psd files in it
+    var output = Folder.selectDialog("select output folder"); // select root folder to output files
 
     if (storybook) {
 
@@ -23,9 +24,20 @@ function saveLayers(options) {
                 app.open(File(theFiles[n]))
                 var doc = app.activeDocument;
 
+                // in case need to change index sequence: i.e., start from 01 to 00
+                // var doc_items = doc.name.split("_")
+                
+                // var doc_idx = doc_items[doc_items.length-1].split(".")[0];
+                // doc_idx = ("0" + (parseInt(doc_idx) - 1)).slice(-2);
+
+                // doc_items[doc_items.length-1] = doc_idx;                
+                // var docname = doc_items.join("_");
+
+                var docname = doc.name.slice(0, doc.name.length-4)
+
                 //folder for processed files
-                //f = new Folder(doc.path + "_png/");
-                f = new Folder(doc.path + "_png_compressed/" + doc.name.slice(0, doc.name.length-4));
+                var newpath = doc.path+"/"
+                f = new Folder(newpath.replace(storybook, output) + "/" + docname);
 
                 if (!f.exists) {
                     f.create();
@@ -56,9 +68,10 @@ function saveLayers(options) {
 
                     //save the renamed / edited file to the jpg folder
                     //var name = doc.path + "_png/" + doc.name.slice(0, doc.name.length-4) + "_" + layer.name + ".png";
-                    var name = doc.path + "_png_compressed/" + doc.name.slice(0, doc.name.length-4) + "/" + layer.name + ".png";
+                    var name = newpath.replace(storybook, output) + "/" + docname + "/" + layer.name + ".png";
                     savePng(name);
                 }
+                app.activeDocument.close(SaveOptions.DONOTSAVECHANGES);  
             }
         }
     }
