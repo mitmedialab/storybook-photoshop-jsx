@@ -14,6 +14,18 @@ File->Scripts->Browse...
 
 The example PSD file, `psd/peaches.psd` can be used to test the scripts.
 
+#### save-individual-layers.jsx
+Saves each layer as PNG file. Run using:
+```
+do-save-individual-layers.jsx
+```
+You will be prompted to select a source folder and an output folder. For each source PSD file, a subfolder with the same name will be created and all layers in that PSD will be saved as PNGs in the new folder.
+
+You might want to resize the photoshop files before saving individual layers, e.g., to import into a mobile app, etc. 
+
+See tutorial videos: [https://drive.google.com/drive/folders/1W2ljgBxpqlmHBrCjfnSGSVrA2zokWE8D?usp=sharing]
+
+
 #### get-layers.jsx
 Gathers layer data into a json object. Run using:
 ```
