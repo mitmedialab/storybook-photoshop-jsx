@@ -25,20 +25,27 @@ function getLayerTypeWithName(layerName) {
     var namePrefix = nameParts[0];
     namePrefix = namePrefix.toLowerCase();
     switch (namePrefix) {
-        case 'guide':
         case 'tl':
-        case 'tr':
-        case 'bl':
-        case 'br':
-            type = 'GUIDE';
+            type = 'TL';
             break;
-        case 'fg':
-            type = 'FG';
+        case 'tr':
+            type = 'TR';
+            break;
+        case 'bl':
+            type = 'BL';
+            break;
+        case 'br':
+            type = 'BR';
             break;
         case 'bg':
             type = 'BG';
             break;
-        case 'obj':
+        case 'background':
+            type = 'BG';
+            break;
+        case 'Background':
+            type = 'BG';
+            break;
         default:
             type = 'OBJ';
             break;
