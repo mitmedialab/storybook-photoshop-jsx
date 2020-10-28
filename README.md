@@ -21,7 +21,7 @@ do-save-individual-layers.jsx
 ```
 You will be prompted to select a source folder and an output folder. For each source PSD file, a subfolder with the same name will be created and all layers in that PSD will be saved as PNGs in the new folder.
 
-You might want to resize the photoshop files before saving individual layers, e.g., to import into a mobile app, etc. 
+You might want to resize the photoshop files before saving individual layers, e.g., to import into a mobile app, etc. Preset files for resizing are inside the Preset folder.
 
 See tutorial videos: [https://drive.google.com/drive/folders/1W2ljgBxpqlmHBrCjfnSGSVrA2zokWE8D?usp=sharing]
 
