@@ -1,6 +1,6 @@
 function savePng(name) {
     var doc = app.activeDocument;
-    var filename = doc.path + '/' + doc.name + '.jpg';
+    var filename = doc.path + '/' + doc.name + '.png';
     if (name) {
         filename = name;
     }
